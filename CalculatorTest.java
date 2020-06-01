@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class CalculatorTest {
 
-    // Use this annotation( ) when you're expecting a RunTimeException, not any kind
+    // Use this annotation( ) when you're expecting a RuntimeException, not any kind
     // of returned value
     // @Test(expected = RuntimeException.class)
     // public final void whenMoreThan2NumbersAreUsedThenAnExceptionIsThrown() {
@@ -14,7 +14,6 @@ public class CalculatorTest {
 
     @Test
     public final void whenAnyNumberOfNumbersIsUsedThenReturnValuesAreTheirSums() {
-
         Assert.assertEquals(1 + 2 + 3 + 4 + 5 + 6 + 7, Calculator.add("1,2,3,4,5,6,7"));
     }
 
@@ -25,12 +24,12 @@ public class CalculatorTest {
     }
 
     @Test(expected = RuntimeException.class)
-    public final void whenNonNumberIsusedThenExceptionIsThrown() {
+    public final void whenNonNumberIsUsedThenExceptionIsThrown() {
         Calculator.add("1,X");
     }
 
     @Test
-    public final void whenEmptyStringIsUsedThenReturnValue() {
+    public final void whenEmptyStringIsUsedThenReturnValue0() {
         Assert.assertEquals(0, Calculator.add(""));
     }
 
@@ -43,4 +42,15 @@ public class CalculatorTest {
     public final void whenTwoNumbersAreUsedReturnValueIsTheirSum() {
         Assert.assertEquals(3 + 6, Calculator.add("3,6"));
     }
+
+    @Test(expected = RuntimeException.class)
+    public final void whenNegativeNumberIsUsedThenRuntimeExceptionIsThrown() {
+        Calculator.add("3,-6,9");
+    }
+
+    @Test
+    public final void whenOneOrMoreNumbersAreGreaterThan1000ItIsNotIncludedInSum() {
+        Assert.assertEquals(1 + 2 + 1000, Calculator.add("1,2,1000,1001,1234"));
+    }
+
 }
