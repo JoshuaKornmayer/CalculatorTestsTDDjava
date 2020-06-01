@@ -27,4 +27,14 @@ public class CalculatorTest {
     public final void whenEmptyStringIsUsedThenReturnValue() {
         Assert.assertEquals(0, Calculator.add(""));
     }
+
+    @Test
+    public final void whenOneNumberIsUsedThenReturnValueIsSameNumber() {
+        Assert.assertEquals(10, Calculator.add("10"));
+    }
+
+    @Test
+    public final void whenTwoNumbersAreUsedReturnValueIsTheirSum() {
+        Assert.assertEquals(3 + 6, Calculator.add("3,6"));
+    }
 }
