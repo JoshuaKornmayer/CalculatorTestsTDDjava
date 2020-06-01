@@ -22,4 +22,9 @@ public class CalculatorTest {
     public final void whenNonNumberIsusedThenExceptionIsThrown() {
         Calculator.add("1,X");
     }
+
+    @Test
+    public final void whenEmptyStringIsUsedThenReturnValue() {
+        Assert.assertEquals(0, Calculator.add(""));
+    }
 }
